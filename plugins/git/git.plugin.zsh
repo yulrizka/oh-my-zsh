@@ -39,6 +39,20 @@ compdef _git gm=git-merge
 alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
 
+# Ahmy's git
+alias gia='git add'
+alias gib='git branch'
+alias gic='git checkout'
+alias gicm='git commit -m'
+alias gir='git remote'
+alias gim='git merge'
+alias gis='git status'
+alias rdbmt='rake db:migrate && rake db:test:prepare'
+alias tailf='tail -f'
+alias gitka='gitk --all'
+alias gicoma='git checkout master && git merge ahmy'
+alias gl='git log --graph --oneline --color --decorate'
+
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
 compdef git-svn-dcommit-push=git
