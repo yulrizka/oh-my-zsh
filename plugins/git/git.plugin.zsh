@@ -46,12 +46,15 @@ alias gic='git checkout'
 alias gicm='git commit -m'
 alias gir='git remote'
 alias gim='git merge'
-alias gis='git status'
+alias gis='git status -sb'
 alias rdbmt='rake db:migrate && rake db:test:prepare'
 alias tailf='tail -f'
 alias gitka='gitk --all'
 alias gicoma='git checkout master && git merge ahmy'
 alias gl='git log --graph --oneline --color --decorate'
+
+# add color
+git config --global color.ui 1
 
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
