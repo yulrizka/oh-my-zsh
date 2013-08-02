@@ -85,7 +85,7 @@ alias gsts='git stash show --text'
 alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
 
 # Ahmy's git
-alias gia='git add -all'
+alias gia='git add --all'
 alias gib='git branch'
 alias gic='git checkout'
 alias gicm='git commit -m'
