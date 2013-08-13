@@ -85,6 +85,15 @@ alias gsts='git stash show --text'
 alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
 
 # Ahmy's git
+
+HASH="%C(yellow)%h%Creset"
+RELATIVE_TIME="%Cgreen(%ar)%Creset"
+AUTHOR="%C(bold blue)<%an>%Creset"
+REFS="%C(bold red)%d%Creset"
+SUBJECT="%s"
+
+FORMAT="$HASH $RELATIVE_TIME $REFS $SUBJECT"
+
 alias gia='git add --all'
 alias gib='git branch'
 alias gic='git checkout'
@@ -96,7 +105,7 @@ alias rdbmt='rake db:migrate && rake db:test:prepare'
 alias tailf='tail -f'
 alias gitka='gitk --all'
 alias gicoma='git checkout master && git merge ahmy'
-alias gl='git log --graph --oneline --color --decorate'
+alias gl="git log --graph --color --decorate --pretty='tformat:${FORMAT}'"
 
 # add color
 git config --global color.ui 1
