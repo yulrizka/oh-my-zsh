@@ -106,6 +106,8 @@ alias tailf='tail -f'
 alias gitka='gitk --all'
 alias gicoma='git checkout master && git merge ahmy'
 alias gl="git log --graph --color --decorate --pretty='tformat:${FORMAT}'"
+alias gla='gl --all'
+alias gdc='git diff --cached'
 
 # add color
 git config --global color.ui 1
