@@ -110,6 +110,9 @@ alias gicoma='git checkout master && git merge ahmy'
 alias gl="git log --graph --color --decorate --pretty='tformat:${FORMAT}'"
 alias gla='gl --all'
 alias gdc='git diff --cached'
+alias gfo='git fetch origin'
+alias gplom='git pull origin master'
+alias gpsom='git push origin master'
 
 # add color
 git config --global color.ui 1
