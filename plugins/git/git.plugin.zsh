@@ -111,6 +111,7 @@ alias gl="git log --graph --color --decorate --pretty='tformat:${FORMAT}'"
 alias gla='gl --all'
 alias gdc='git diff --cached'
 alias gfo='git fetch origin'
+alias gpo='git push origin'
 alias gplom='git pull origin master'
 alias gpsom='git push origin master'
 
