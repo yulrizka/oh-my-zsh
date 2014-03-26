@@ -28,8 +28,8 @@ fi
 # List direcory contents
 alias lsa='ls -lah'
 alias l='ls -lah'
-alias ll='ls -l'
-alias la='ls -lA'
+alias ll='ls -lh'
+alias la='ls -lAh'
 alias sl=ls # often screw this up
 
 alias afind='ack-grep -il'
