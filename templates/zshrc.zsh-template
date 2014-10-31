@@ -81,3 +81,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 alias tmux='tmux -2'
 export EDITOR="vim"
+
+# fix ssh agent on tmux
+if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock;
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
