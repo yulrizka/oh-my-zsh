@@ -245,17 +245,24 @@ alias gvt='git verify-tag'
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"'
 
+# Ahmy's git
+#
+HASH="%C(yellow)%h%Creset"
+RELATIVE_TIME="%Cgreen(%ar)%Creset"
+AUTHOR="%C(bold black)<%an>%Creset"
+REFS="%C(bold blue)%d%Creset"
+SUBJECT="%s"
+FORMAT="$HASH $RELATIVE_TIME $REFS $SUBJECT $AUTHOR"
+
 alias gia='git add --all'
 alias gib='git branch'
 alias gic='git checkout'
 alias gicm='git commit -m'
-alias gir='git remote'
 alias gim='git merge'
 alias gis='git status -sb'
 alias rdbmt='rake db:migrate && rake db:test:prepare'
 alias tailf='tail -f'
 alias gitka='gitk --all'
-alias gicoma='git checkout master && git merge ahmy'
 alias gl="git log --graph --color --decorate --pretty='tformat:${FORMAT}'"
 alias gla='gl --all'
 alias gdc='git diff --cached'
