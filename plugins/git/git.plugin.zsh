@@ -247,10 +247,10 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 
 # Ahmy's git
 #
-HASH="%C(yellow)%h%Creset"
+HASH="%C(blue)%h%Creset"
 RELATIVE_TIME="%Cgreen(%ar)%Creset"
 AUTHOR="%C(bold black)<%an>%Creset"
-REFS="%C(bold blue)%d%Creset"
+REFS="%C(bold red)%d%Creset"
 SUBJECT="%s"
 FORMAT="$HASH $RELATIVE_TIME $REFS $SUBJECT $AUTHOR"
 
