@@ -236,7 +236,7 @@ alias gis='git status -sb'
 alias rdbmt='rake db:migrate && rake db:test:prepare'
 alias tailf='tail -f'
 alias gitka='gitk --all'
-alias gl="git log --graph --color --decorate --pretty='tformat:${FORMAT}'"
+alias gl="glola"
 alias gla='gl --all'
 alias gdc='git diff --cached'
 alias gfo='git fetch origin'
