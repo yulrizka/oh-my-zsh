@@ -103,7 +103,7 @@ __i_tool_complete() {
     "svc"|"s")
       if (( CURRENT == 3)); then
         local services
-        services=($(ls -d $icas_base/src/java/*/ $icas_base/src/go/src/cas/svc/*/ | xargs basename))
+        services=$(ls -d $icas_base/src/java/*/ $icas_base/src/go/src/cas/svc/*/ | xargs basename)
         _alternative "dirs:user directories:($services)"
       fi
       ;;
