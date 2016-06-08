@@ -1,5 +1,5 @@
 local user="%{$fg_bold[grey]%}%m %{$reset_color%}"
-local indicator="%{%(#~#~➜)%}"
+local indicator="%(!.#.➜)"
 local ret_status="%(?:%{$fg_bold[green]%}$indicator :%{$fg_bold[red]%}$indicator %s)"
 PROMPT='${user}$(git_prompt_info)%{$fg_bold[blue]%}%c ${ret_status}%{$reset_color%}'
 
