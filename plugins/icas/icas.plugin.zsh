@@ -6,6 +6,8 @@ __i_tool_complete() {
   typeset -a commands
   commands+=(
     'console[cd into icas-console]'
+    'consul[control consul service]'
+    'fabio[control fabio service]'
     'go[cd into go directory or its children]'
     'java[cd into java directory or its children]'
     'log[cd into log directory or tail -f file inside it]'
@@ -14,6 +16,7 @@ __i_tool_complete() {
     'properties[cd into java/cas/properties]'
     'thrift[cd into thrift directory]'
     {svc,s}'[cd into service directory both JAVA or GO]'
+    'supervisor[control supervisor process]'
     'tools[cd into tools directory or its children]'
     {puppet,p}'[cd into puppet directory]'
     {query,q}'[query either registry or port information of a service]'
@@ -26,6 +29,21 @@ __i_tool_complete() {
   fi
 
   case ${words[2]} in
+    "consul")
+      _values "consul options" \
+        "start[start consul]" \
+        "stop[stop consul]" \
+        "restart[restart consul]" \
+        "clean[clean consul data]"
+      ;;
+    "fabio")
+      _values "consul options" \
+        "start[start service]" \
+        "stop[stop service]" \
+        "status[show status]" \
+        "restart[restart service]" \
+        "update[update fabio config]"
+      ;;
     "go")
       if (( CURRENT == 3)); then
         _files -W "$icas_base/src/go/src/cas" -/
@@ -47,10 +65,7 @@ __i_tool_complete() {
           "rebuild[rebuild java packages]" \
           "clean[remove temp files]" \
           "migrations[run all DB migrations]" \
-          "consul[start/stop consul]" \
-          "fabio[start/stop fabio]" \
           "smoke[run smoke test]" \
-          "supervisor[start supervisord]" \
           "thrift[regenerate all thrift files]" \
           "thriftlib[build thrift compiler for Go and update thrift lib]"
         return
@@ -80,18 +95,6 @@ __i_tool_complete() {
             _alternative "dirs:user directories:($services)"
           fi
           ;;
-        "consul")
-          _values "consul options" \
-            "start[start consul]" \
-            "stop[stop consul]" \
-            "restart[restart consul]"
-          ;;
-        "fabio"|"supervisor")
-          _values "consul options" \
-            "start[start service]" \
-            "stop[stop service]" \
-            "restart[restart service]"
-          ;;
         "smoke")
           _arguments : \
             "-env[dev, lp, prod]" \
@@ -99,6 +102,13 @@ __i_tool_complete() {
             "*:next:"
           ;;
       esac
+      ;;
+    "supervisor")
+      _values "consul options" \
+        "start[start consul]" \
+        "stop[stop consul]" \
+        "status[show status]" \
+        "restart[restart consul]"
       ;;
     "svc"|"s")
       if (( CURRENT == 3)); then
