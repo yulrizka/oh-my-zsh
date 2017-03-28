@@ -225,6 +225,7 @@ alias gstd='git stash drop'
 alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gsts='git stash show --text'
+alias gstk='git stash --keep-index'
 alias gsu='git submodule update'
 
 alias gts='git tag -s'
