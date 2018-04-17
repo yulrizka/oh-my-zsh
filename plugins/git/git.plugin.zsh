@@ -256,9 +256,9 @@ alias gicm='git commit -m'
 alias gim='git merge'
 alias gis='git status -sb'
 alias tailf='tail -f'
-alias gitka='gitk --all'
+alias gitka='gitk --tags --branches'
 alias gl="glola"
-alias gla='gl --all'
+alias gla="git log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --tags --branches"
 alias gdc='git diff --cached'
 alias gfo='git fetch origin'
 alias grom='git rebase origin/master'

@@ -60,14 +60,16 @@ __i_tool_complete() {
     "make-all"|"m")
       if (( CURRENT == 3)); then
         _values "make-all.bash commands" \
-          "init[setup environment after checkout]" \
           "build[build packages]" \
-          "rebuild[rebuild java packages]" \
           "clean[remove temp files]" \
+          "docker[docker sub command for dependency]" \
+          "init[setup environment after checkout]" \
           "migrations[run all DB migrations]" \
-          "smoke[run smoke test]" \
+          "rebuild[rebuild java packages]" \
+          "resetch[delete and recreate all Clickhouse tables and views]" \
+          "resetes[delete and recreate all ES indices]" \
           "thrift[regenerate all thrift files]" \
-          "thriftlib[build thrift compiler for Go and update thrift lib]"
+          "verify[gerrit verify]"
         return
       fi
       case ${words[3]} in
