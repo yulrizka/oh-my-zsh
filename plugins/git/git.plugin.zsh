@@ -179,10 +179,11 @@ alias glgp='git log --stat --color -p'
 alias glgg='git log --graph --color'
 alias glgga='git log --graph --decorate --all'
 alias glgm='git log --graph --max-count=10'
-alias glo='git log --oneline --decorate --color'
-alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias glola="git log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
-alias glog='git log --oneline --decorate --color --graph'
+alias glo='git log --oneline --decorate'
+alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias glola="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+alias glog='git log --oneline --decorate --graph'
+alias gloga='git log --oneline --decorate --graph --all'
 alias glp="_git_log_prettily"
 compdef _git glp=git-log
 
@@ -208,8 +209,8 @@ alias grbc='git rebase --continue'
 alias grbi='git rebase -i'
 alias grbm='git rebase master'
 alias grbs='git rebase --skip'
-alias grh='git reset HEAD'
-alias grhh='git reset HEAD --hard'
+alias grh='git reset'
+alias grhh='git reset --hard'
 alias grmv='git remote rename'
 alias grrm='git remote remove'
 alias grset='git remote set-url'
