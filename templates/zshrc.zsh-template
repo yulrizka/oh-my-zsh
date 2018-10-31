@@ -108,7 +108,3 @@ if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 
-bindkey "^P" up-line-or-search
-bindkey "^N" down-line-or-search
-bindkey -M viins '\e.' insert-last-word
-
