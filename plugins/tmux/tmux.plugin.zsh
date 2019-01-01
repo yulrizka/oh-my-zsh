@@ -3,8 +3,10 @@ if ! (( $+commands[tmux] )); then
   return 1
 fi
 
-alias ta='tmux -2 attach -t'
-alias tad='tmux -2 attach -d -t'
+# ALIASES
+
+alias ta='tmux attach -t'
+alias tad='tmux attach -d -t'
 alias ts='tmux new-session -s'
 alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
@@ -34,7 +36,7 @@ alias tkss='tmux kill-session -t'
 : ${ZSH_TMUX_FIXTERM_WITH_256COLOR:=screen-256color}
 
 # Determine if the terminal supports 256 colors
-if [[ $(tput colors) == 256 ]]; then
+if [[ $terminfo[colors] == 256 ]]; then
   export ZSH_TMUX_TERM=$ZSH_TMUX_FIXTERM_WITH_256COLOR
 else
   export ZSH_TMUX_TERM=$ZSH_TMUX_FIXTERM_WITHOUT_256COLOR

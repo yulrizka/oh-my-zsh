@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!zsh
 #
 # Installation
@@ -20,6 +21,8 @@
 #     c. Or, use this file as a oh-my-zsh plugin.
 #
 
+=======
+>>>>>>> a29950146b9d992caf880679dfce90c6a1ef2eea
 _git-flow ()
 {
     local curcontext="$curcontext" state line
