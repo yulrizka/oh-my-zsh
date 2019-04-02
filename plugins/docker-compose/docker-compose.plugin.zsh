@@ -24,3 +24,10 @@ alias dcl='docker-compose logs'
 alias dclf='docker-compose logs -f'
 alias dcpull='docker-compose pull'
 alias dcstart='docker-compose start'
+
+# ahmy's docker-compose
+alias dc=docker-compose
+alias dclf="docker-compose logs -f --tail=50"
+alias dcl="docker-compose logs"
+alias dcrit='docker-compose run -it --rm'
+alias mdr='make docker.rebuild'
