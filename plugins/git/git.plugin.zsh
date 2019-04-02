@@ -50,7 +50,7 @@ alias gap='git apply'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gbd='git branch -d'
-alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d'
+alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -r -n 1 git branch -d'
 alias gbD='git branch -D'
 alias gbl='git blame -b -w'
 alias gbnm='git branch --no-merged'
@@ -73,7 +73,7 @@ alias gcsm='git commit -s -m'
 alias gcb='git checkout -b'
 alias gcf='git config --list'
 alias gcl='git clone --recurse-submodules'
-alias gclean='git clean -fd'
+alias gclean='git clean -id'
 alias gpristine='git reset --hard && git clean -dfx'
 alias gcm='git checkout master'
 alias gcd='git checkout develop'
@@ -112,8 +112,8 @@ ggf() {
   git push --force origin "${b:=$1}"
 }
 ggfl() {
-[[ "$#" != 1 ]] && local b="$(git_current_branch)"
-git push --force-with-lease origin "${b:=$1}"
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  git push --force-with-lease origin "${b:=$1}"
 }
 compdef _git ggf=git-checkout
 
@@ -155,10 +155,10 @@ compdef _git ggu=git-checkout
 alias ggpur='ggu'
 compdef _git ggpur=git-checkout
 
-alias ggpull='git pull origin $(git_current_branch)'
+alias ggpull='git pull origin "$(git_current_branch)"'
 compdef _git ggpull=git-checkout
 
-alias ggpush='git push origin $(git_current_branch)'
+alias ggpush='git push origin "$(git_current_branch)"'
 compdef _git ggpush=git-checkout
 
 alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
@@ -220,12 +220,13 @@ alias grbm='git rebase master'
 alias grbs='git rebase --skip'
 alias grh='git reset'
 alias grhh='git reset --hard'
+alias groh='git reset origin/$(git_current_branch) --hard'
 alias grm='git rm'
 alias grmc='git rm --cached'
 alias grmv='git remote rename'
 alias grrm='git remote remove'
 alias grset='git remote set-url'
-alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
+alias grt='cd "$(git rev-parse --show-toplevel || echo .)"'
 alias gru='git reset --'
 alias grup='git remote update'
 alias grv='git remote -v'
@@ -261,7 +262,7 @@ alias gupav='git pull --rebase --autostash -v'
 alias glum='git pull upstream master'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
-alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
 
 # Ahmy's git
 #
