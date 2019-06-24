@@ -1,5 +1,97 @@
 # go tool
 
+function i() {
+local base=${ICAS_BASE:-~/dev/ecg-icas/icas}
+case "$1" in
+  "")
+    cd ${base}
+    ;;
+  "console")
+    cd ${base}/../icas-console
+    ;;
+  "consul")
+    ${base}/bin/consul $2
+    ;;
+  "fabio")
+    cd ${base}; bin/fabio $2; cd -
+    ;;
+  "go")
+    cd ${base}/src/go/src/cas/$2
+    ;;
+  "java")
+    cd ${base}/src/java
+    ;;
+  "log")
+    case "$2" in
+      "")
+        cd ${base}/log
+        ;;
+      *)
+        pushd ${base}/log > /dev/null
+        tail -f ${@:2} | clog
+        popd > /dev/null
+        ;;
+    esac
+    ;;
+  "make-all"|"m")
+    pushd ${base} > /dev/null
+    bin/make-all.bash ${@:2}
+    popd > /dev/null
+    ;;
+  "properties")
+    cd ${base}/src/java/cas-properties
+    ;;
+  "puppet"|"p")
+    cd ${base}/../ecg-puppet-icas
+    ;;
+  "query"|"q")
+    case "$2" in
+      "port")
+        grep -H "$3" ${base}/etc/registry/* /dev/null
+        ;;
+      "svc")
+        grep -l ".*" ${base}/etc/registry/*"$3"* | while read -r line; do
+        echo "$line"
+        echo "==="
+        cat "$line"
+        echo
+      done
+      ;;
+    *)
+      echo "use i q (port|svc) (search string)"
+      return 1
+      ;;
+  esac
+  ;;
+  "registry")
+    cd ${base}/etc/registry
+    ;;
+  "supervisor")
+    ${base}/bin/supervisor $2
+    ;;
+  "svc"|"s")
+    if [ -d "${base}/src/go/src/cas/svc/$2" ]; then
+      cd ${base}/src/go/src/cas/svc/$2
+    elif [ -d "${base}/src/java/$2" ]; then
+      cd ${base}/src/java/$2
+    else
+      echo "could not found service $2"
+      return 1
+    fi
+    ;;
+  "thrift")
+    cd ${base}/src/thrift
+    ;;
+  "tools")
+    cd ${base}/src/go/src/cas/tools/$2
+    ;;
+  *)
+  echo "i $1 not understood"
+  return 1
+  ;;
+  esac
+}
+
 __i_tool_complete() {
   local icas_base=${ICAS_BASE:-~/dev/ecg-icas/icas}
 
