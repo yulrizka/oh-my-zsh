@@ -7,3 +7,4 @@ ZSH_THEME_GIT_PROMPT_PREFIX="%{$BG[236]%}%{$FG[113]%} "
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}%{$FG[236]%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%} %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}"
+LSCOLORS=Exfxcxdxbxegedabagacad
