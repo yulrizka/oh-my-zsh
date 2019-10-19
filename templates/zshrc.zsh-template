@@ -111,6 +111,10 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
+# globalias
+alias -g G='| grep'
+alias -g W='| wc -l'
+
 alias vim="stty stop '' -ixoff ; vim"
 # `Frozing' tty, so after any command terminal settings will be restored
 ttyctl -f
