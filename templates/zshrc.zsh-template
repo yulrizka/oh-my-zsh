@@ -88,6 +88,8 @@ source $ZSH/oh-my-zsh.sh
 #
 bindkey '^ ' autosuggest-accept
 bindkey '^q' push-line-or-edit
+bindkey "^P" up-line-or-beginning-search
+bindkey "^N" down-line-or-beginning-search
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
