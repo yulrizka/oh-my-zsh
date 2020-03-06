@@ -47,15 +47,15 @@ case "$1" in
   "query"|"q")
     case "$2" in
       "port")
-        grep -H "$3" ${base}/etc/registry/* /dev/null
+        local portNum=$3
+        if [ ${#portNum} -ge 4 ]; 
+        then
+          portNum=${portNum:0:4}
+        fi
+        grep "$portNum" ${base}/service-ports.txt
         ;;
       "svc")
-        grep -l ".*" ${base}/etc/registry/*"$3"* | while read -r line; do
-        echo "$line"
-        echo "==="
-        cat "$line"
-        echo
-      done
+        grep "$3" ${base}/service-ports.txt 
       ;;
     *)
       echo "use i q (port|svc) (search string)"
@@ -65,9 +65,6 @@ case "$1" in
   ;;
   "registry")
     cd ${base}/etc/registry
-    ;;
-  "supervisor")
-    ${base}/bin/supervisor $2
     ;;
   "svc"|"s")
     if [ -d "${base}/src/go/src/cas/svc/$2" ]; then
@@ -108,11 +105,9 @@ __i_tool_complete() {
     'properties[cd into java/cas/properties]'
     'thrift[cd into thrift directory]'
     {svc,s}'[cd into service directory both JAVA or GO]'
-    'supervisor[control supervisor process]'
     'tools[cd into tools directory or its children]'
     {puppet,p}'[cd into puppet directory]'
     {query,q}'[query either registry or port information of a service]'
-    {vagrant,v}'[run vagrant command]'
   )
   if (( CURRENT == 2 )); then
     # explain i command
