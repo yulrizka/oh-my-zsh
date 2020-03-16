@@ -283,3 +283,13 @@ alias grc='git rebase --continue'
 alias gcnn!='git commit -v --no-edit --amend --no-verify'
 alias gprs='git pull --rebase --autostash'
 alias ghpr='git fetch origin;git rebase origin/master && git push -u && hub pull-request'
+
+function glb() {
+  if [[ "$#" == 0 ]]; then
+    for i in {1..10}; do echo -n "$i\t"; git rev-parse --symbolic-full-name @{-$i}; done
+  else
+     git checkout @{-$1}
+  fi
+}
+compdef _git glb=glb
+alias D=glb
