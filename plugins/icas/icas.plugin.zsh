@@ -22,16 +22,7 @@ case "$1" in
     cd ${base}/src/java
     ;;
   "log")
-    case "$2" in
-      "")
-        cd ${base}/log
-        ;;
-      *)
-        pushd ${base}/log > /dev/null
-        tail -f ${@:2} | clog
-        popd > /dev/null
-        ;;
-    esac
+    docker-compose logs -f --tail=50 $2
     ;;
   "make-all"|"m")
     pushd ${base} > /dev/null
@@ -142,7 +133,8 @@ __i_tool_complete() {
       fi
       ;;
     "log")
-      _files -W "$icas_base/log"
+      services=$(ls -d $icas_base/src/java/*/ $icas_base/src/go/src/cas/svc/*/ | xargs basename)
+      _alternative "dirs:user directories:($services)"
       ;;
     "make-all"|"m")
       if (( CURRENT == 3)); then
